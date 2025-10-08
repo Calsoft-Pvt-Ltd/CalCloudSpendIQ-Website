@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CloudSpendIQ - AWS Cost Monitoring & Optimization Platform. Automated daily reports, real-time cost tracking, and intelligent recommendations to optimize your AWS spending.">
+    <meta name="keywords" content="AWS cost optimization, cloud cost management, AWS pricing, cost monitoring, AWS billing, cloud spending">
+    <meta name="author" content="Calsoft Inc.">
+    <title>CloudSpendIQ - AWS Cost Monitoring & Optimization Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FF9900;
+            --secondary-color: #232F3E;
+            --accent-color: #146EB4;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --gradient: linear-gradient(135deg, #FF9900 0%, #FF6B00 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,101.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+
+        .benefit-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            min-width: 40px;
+        }
+
+        .benefit-item h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Monitoring Section */
+        .monitoring {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .monitoring-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .monitoring-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+
+        .monitoring-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .monitoring-card ul {
+            list-style: none;
+            color: var(--text-light);
+        }
+
+        .monitoring-card ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .monitoring-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            color: var(--white);
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .pricing-info {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 40px auto;
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-info h3 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .pricing-info .price {
+            font-size: 3rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .pricing-info .subtext {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .cost-breakdown {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .cost-breakdown ul {
+            list-style: none;
+        }
+
+        .cost-breakdown li {
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 15px 40px;
+            border: 2px solid var(--white);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: var(--white);
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 8px 0;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .feature-grid,
+            .benefits-grid,
+            .monitoring-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-info {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .case-study-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .case-study-image {
+            width: 100%;
+            height: 250px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-study-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(35, 47, 62, 0.8) 0%, rgba(20, 110, 180, 0.8) 100%);
+        }
+
+        .case-study-icon {
+            font-size: 5rem;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .case-study-content {
+            padding: 30px;
+        }
+
+        .case-study-tag {
+            display: inline-block;
+            background: var(--light-bg);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .case-study-card h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .case-study-highlight {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+
+        .case-study-highlight .highlight-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 5px;
+        }
+
+        .case-study-highlight .highlight-text {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .case-study-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .read-more-btn:hover {
+            background: var(--secondary-color);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-cloud"></i>
+                    CloudSpendIQ
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#case-studies">Case Studies</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">
+                    <i class="fab fa-aws"></i> Powered by AWS
+                </div>
+                <h1>Take Control of Your AWS Spending</h1>
+                <p>Automated daily cost reports, real-time monitoring, and intelligent optimization recommendations</p>
+                <a href="#contact" class="cta-button">Get Started Today <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why CloudSpendIQ?</h2>
+                <p>Complete visibility and control over your AWS infrastructure costs</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Real-Time Cost Tracking</h3>
+                    <p>Get accurate, up-to-date AWS pricing data via the AWS Pricing API. Monitor your spending with approximate monthly cost projections.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Daily Email Reports</h3>
+                    <p>Receive beautifully formatted HTML reports delivered to your inbox every day with detailed resource-level cost breakdowns.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Multi-Region Support</h3>
+                    <p>Scan and monitor resources across all AWS regions from a single dashboard. Comprehensive coverage for your global infrastructure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Cost Optimization</h3>
+                    <p>Identify unattached EBS volumes, idle resources, and other cost-saving opportunities automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Fully Automated</h3>
+                    <p>Serverless architecture using AWS Lambda and CloudWatch Events. No servers to manage, completely hands-free operation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure & Compliant</h3>
+                    <p>Read-only permissions following AWS best practices. Your infrastructure remains safe and secure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Benefits for Your Business</h2>
+                <p>Save time, reduce costs, and gain complete visibility</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div>
+                        <h4>Reduce AWS Costs by 30%+</h4>
+                        <p>Identify and eliminate wasteful spending with actionable insights</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4>Save Hours Every Week</h4>
+                        <p>Automated reporting eliminates manual cost analysis</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div>
+                        <h4>Complete Visibility</h4>
+                        <p>Know exactly what you're spending and where</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div>
+                        <h4>Proactive Alerts</h4>
+                        <p>Get notified about cost anomalies before they impact your budget</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2>Real Results from Real Customers</h2>
+                <p>See how CloudSpendIQ helped companies dramatically reduce their AWS costs</p>
+            </div>
+            <div class="case-study-grid">
+                <!-- Case Study 1 -->
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <div class="case-study-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-tag">Cloud Monitoring</span>
+                        <h3>Cloud Monitoring Company</h3>
+                        <div class="case-study-highlight">
+                            <div class="highlight-number">50%</div>
+                            <div class="highlight-text">Reduction in Monthly AWS Billing</div>
+                        </div>
+                        <p class="case-study-description">
+                            A leading cloud monitoring company with heavy AWS usage in their dev/qa environment
+                            successfully reduced their monthly billing by nearly 50% within the first year of using
+                            CloudSpendIQ's smart alerts and optimization recommendations.
+                        </p>
+                        <a href="case-study-cloud-monitoring.html" class="read-more-btn">
+                            Read Full Case Study <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <div class="case-study-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-tag">Telecommunications</span>
+                        <h3>Multi-Cloud Telco Provider</h3>
+                        <div class="case-study-highlight">
+                            <div class="highlight-number">30%</div>
+                            <div class="highlight-text">Reduction in Dev/QA Environment Costs</div>
+                        </div>
+                        <p class="case-study-description">
+                            A telecommunications company building their multi-cloud product achieved a 30% reduction
+                            in their dev/qa environment monthly billing through strategic resource optimization and
+                            smart alerts provided by CloudSpendIQ.
+                        </p>
+                        <a href="case-study-telco.html" class="read-more-btn">
+                            Read Full Case Study <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monitoring Section -->
+    <section id="monitoring" class="monitoring">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Resource Monitoring</h2>
+                <p>Track every critical AWS resource with accurate cost calculations</p>
+            </div>
+            <div class="monitoring-grid">
+                <div class="monitoring-card">
+                    <h3><i class="fas fa-server"></i> EC2 Instances</h3>
+                    <ul>
+                        <li>Instance type and configuration</li>
+                        <li>Operating system (Windows/Linux)</li>
+                        <li>Running state and launch time</li>
+                        <li>OS-aware pricing calculations</li>
+                    </ul>
+                </div>
+                <div class="monitoring-card">
+                    <h3><i class="fas fa-hdd"></i> EBS Volumes</h3>
+                    <ul>
+                        <li>Volume type (gp2, gp3, io1, io2, st1, sc1)</li>
+                        <li>Storage size and IOPS</li>
+                        <li>Attached vs. unattached status</li>
+                        <li>Type-specific pricing</li>
+                    </ul>
+                </div>
+                <div class="monitoring-card">
+                    <h3><i class="fas fa-network-wired"></i> Elastic & Public IPs</h3>
+                    <ul>
+                        <li>All allocated Elastic IPs</li>
+                        <li>Ephemeral public IPs</li>
+                        <li>Association status</li>
+                        <li>Idle IP identification</li>
+                    </ul>
+                </div>
+                <div class="monitoring-card">
+                    <h3><i class="fas fa-database"></i> RDS Instances</h3>
+                    <ul>
+                        <li>Database engine type</li>
+                        <li>Instance class and size</li>
+                        <li>Engine-specific pricing</li>
+                        <li>Multi-AZ configuration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Simple, automated, and effective</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Deploy to AWS</h3>
+                    <p>One-click CloudFormation deployment to your AWS account in minutes</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Automatic Scanning</h3>
+                    <p>Daily automated scans across all your AWS regions and resources</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Cost Calculation</h3>
+                    <p>Real-time pricing data fetched via AWS Pricing API with intelligent caching</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Receive Reports</h3>
+                    <p>Get detailed HTML email reports with actionable insights and recommendations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transparent, Affordable Pricing</h2>
+                <p>Pay only for what you use - AWS infrastructure costs</p>
+            </div>
+            <div class="pricing-info">
+                <h3>Minimal Operating Costs</h3>
+                <p class="price">~$2/month</p>
+                <p class="subtext">Typical AWS infrastructure costs to run CloudSpendIQ</p>
+
+                <div class="cost-breakdown">
+                    <h4 style="margin-bottom: 20px; color: var(--secondary-color);">Cost Breakdown:</h4>
+                    <ul>
+                        <li>
+                            <span>AWS Lambda</span>
+                            <span>$0-1/mo (within free tier)</span>
+                        </li>
+                        <li>
+                            <span>Amazon SES</span>
+                            <span>$0 (first 62,000 emails free)</span>
+                        </li>
+                        <li>
+                            <span>CloudWatch Logs</span>
+                            <span>~$0.50/mo</span>
+                        </li>
+                        <li>
+                            <span>EventBridge</span>
+                            <span>$0 (within free tier)</span>
+                        </li>
+                        <li style="border-top: 2px solid var(--secondary-color); margin-top: 10px; padding-top: 15px; font-weight: bold;">
+                            <span>Total</span>
+                            <span style="color: var(--primary-color);">~$2/month</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p style="margin-top: 30px; color: var(--text-light); font-style: italic;">
+                    <i class="fas fa-info-circle"></i> ROI: Save 30%+ on AWS costs while spending less than $2/month
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Ready to Optimize Your AWS Spending?</h2>
+            <p>Contact us today to set up CloudSpendIQ for your organization</p>
+            <div class="cta-buttons">
+                <a href="mailto:contact@calsoft.com?subject=CloudSpendIQ%20Setup%20Request" class="btn-primary">
+                    <i class="fas fa-envelope"></i> Contact Us for Setup
+                </a>
+                <a href="https://github.com/your-repo/cloudspendiq" class="btn-secondary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+
+            <div class="stats" style="margin-top: 60px;">
+                <div class="stat-item">
+                    <div class="stat-number">30%+</div>
+                    <div class="stat-label">Average Cost Savings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5 min</div>
+                    <div class="stat-label">Setup Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Automated</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Monitoring</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CloudSpendIQ</h3>
+                    <p>Professional AWS cost monitoring and optimization platform for enterprises.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#monitoring">Resource Monitoring</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">AWS Best Practices</a></li>
+                        <li><a href="#">Cost Optimization Guide</a></li>
+                        <li><a href="#">API Reference</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Calsoft</a></li>
+                        <li><a href="mailto:contact@calsoft.com">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Calsoft Inc. All rights reserved. | CloudSpendIQ - AWS Cost Optimization Platform</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.feature-card, .monitoring-card, .step, .benefit-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

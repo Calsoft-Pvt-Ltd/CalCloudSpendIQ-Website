@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cloud Monitoring Company Case Study - 50% Cost Reduction with CloudSpendIQ">
+    <title>Case Study: Cloud Monitoring Company | CloudSpendIQ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FF9900;
+            --secondary-color: #232F3E;
+            --accent-color: #146EB4;
+            --success-color: #4caf50;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --gradient: linear-gradient(135deg, #FF9900 0%, #FF6B00 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .case-study-hero {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .case-study-hero .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .case-study-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .case-study-hero .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        /* Key Metrics Section */
+        .key-metrics {
+            background: var(--white);
+            padding: 40px 0;
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .metric-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .metric-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-icon {
+            color: var(--primary-color);
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .column-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .column-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .column-card ul {
+            list-style: none;
+        }
+
+        .column-card ul li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .column-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+        }
+
+        .chart-title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 300px;
+            padding: 20px;
+            border-bottom: 2px solid var(--text-light);
+        }
+
+        .bar {
+            flex: 1;
+            margin: 0 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .bar-fill {
+            width: 100%;
+            background: var(--gradient);
+            border-radius: 10px 10px 0 0;
+            transition: all 0.3s;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10px;
+        }
+
+        .bar-fill.before {
+            background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+        }
+
+        .bar-fill.after {
+            background: linear-gradient(135deg, #43a047 0%, #2e7d32 100%);
+        }
+
+        .bar-value {
+            color: var(--white);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .bar-label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+        }
+
+        .timeline-month {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* ROI Section */
+        .roi-highlight {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .roi-highlight h3 {
+            font-size: 2rem;
+            color: #2e7d32;
+            margin-bottom: 30px;
+        }
+
+        .roi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .roi-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .roi-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .roi-label {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 60px 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            left: 40px;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 60px 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: var(--white);
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .case-study-hero h1 {
+                font-size: 2rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin-left: 40px !important;
+            }
+
+            .timeline-marker {
+                left: 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Architecture Diagram */
+        .architecture-diagram {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+        }
+
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .diagram-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .diagram-box {
+            background: var(--light-bg);
+            padding: 20px 30px;
+            border-radius: 10px;
+            border: 2px solid var(--primary-color);
+            min-width: 150px;
+            text-align: center;
+            position: relative;
+        }
+
+        .diagram-box.highlight {
+            background: var(--gradient);
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        .diagram-arrow {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-cloud"></i>
+                    CloudSpendIQ
+                </a>
+                <a href="index.html#case-studies" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Main Site
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="case-study-hero">
+        <div class="container">
+            <div class="badge">
+                <i class="fas fa-chart-line"></i> Cloud Monitoring
+            </div>
+            <h1>Cloud Monitoring Company Case Study</h1>
+            <p class="subtitle">How a leading cloud monitoring company reduced AWS costs by 50% in dev/qa environments</p>
+        </div>
+    </section>
+
+    <!-- Key Metrics -->
+    <section class="key-metrics">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-number">50%</div>
+                    <div class="metric-label">Cost Reduction</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">$180K</div>
+                    <div class="metric-label">Annual Savings</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">3 Months</div>
+                    <div class="metric-label">Time to ROI</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">15+</div>
+                    <div class="metric-label">AWS Regions Monitored</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Overview -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-building section-icon"></i>
+                Company Overview
+            </h2>
+            <p class="content-text">
+                Our client is a rapidly growing cloud monitoring and observability platform provider serving enterprise
+                customers across multiple industries. With a distributed team of 200+ engineers, they operate extensive
+                development and QA environments across multiple AWS regions to support their continuous integration and
+                deployment pipelines.
+            </p>
+            <div class="two-column">
+                <div class="column-card">
+                    <h3>Company Profile</h3>
+                    <ul>
+                        <li>Industry: Cloud Monitoring & Observability</li>
+                        <li>Company Size: 500+ employees</li>
+                        <li>Engineering Team: 200+ developers</li>
+                        <li>AWS Presence: 15+ regions globally</li>
+                        <li>Infrastructure: 500+ EC2 instances, 200+ RDS databases</li>
+                    </ul>
+                </div>
+                <div class="column-card">
+                    <h3>Environment Details</h3>
+                    <ul>
+                        <li>Development environments: 8 regions</li>
+                        <li>QA/Testing environments: 7 regions</li>
+                        <li>Monthly AWS spend: $360,000 (dev/qa)</li>
+                        <li>Active resources: 1,000+ at any time</li>
+                        <li>Daily deployments: 50-100 per day</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Challenge -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-exclamation-triangle section-icon"></i>
+                The Challenge
+            </h2>
+            <p class="content-text">
+                The company was experiencing rapidly escalating AWS costs in their development and QA environments.
+                Despite having a talented engineering team, they lacked visibility into resource utilization and
+                cost attribution. Key challenges included:
+            </p>
+
+            <div class="architecture-diagram">
+                <h3 class="chart-title">Resource Wastage Pattern</h3>
+                <div class="diagram-container">
+                    <div class="diagram-row">
+                        <div class="diagram-box">
+                            <i class="fas fa-server" style="font-size: 2rem; color: var(--primary-color);"></i>
+                            <p>150+ Idle EC2 Instances</p>
+                        </div>
+                        <div class="diagram-box">
+                            <i class="fas fa-hdd" style="font-size: 2rem; color: var(--primary-color);"></i>
+                            <p>80+ Unattached EBS Volumes</p>
+                        </div>
+                        <div class="diagram-box">
+                            <i class="fas fa-network-wired" style="font-size: 2rem; color: var(--primary-color);"></i>
+                            <p>25+ Unused Elastic IPs</p>
+                        </div>
+                    </div>
+                    <div class="diagram-arrow">↓</div>
+                    <div class="diagram-box highlight">
+                        <h3 style="margin: 0;">$360K Monthly Spend</h3>
+                        <p style="margin: 10px 0 0 0;">In Dev/QA Environments</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="column-card">
+                    <h3>Key Pain Points</h3>
+                    <ul>
+                        <li>No visibility into per-team resource usage</li>
+                        <li>Developers forgetting to terminate test instances</li>
+                        <li>Orphaned EBS volumes after instance termination</li>
+                        <li>Unattached Elastic IPs accumulating charges</li>
+                        <li>Over-provisioned RDS instances running 24/7</li>
+                        <li>No automated alerts for cost anomalies</li>
+                    </ul>
+                </div>
+                <div class="column-card">
+                    <h3>Business Impact</h3>
+                    <ul>
+                        <li>$360K monthly AWS spend for non-production</li>
+                        <li>Finance team demanding cost reductions</li>
+                        <li>Manual cost analysis taking 10+ hours/week</li>
+                        <li>No accountability for resource usage</li>
+                        <li>Budget overruns every quarter</li>
+                        <li>Limited funds for production infrastructure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="quote-section">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="quote-text">
+                    "We were burning cash on idle resources 24/7. Our dev teams had no idea how much their test
+                    environments were costing us. We needed immediate visibility and automated alerts to get
+                    this under control."
+                </p>
+                <p class="quote-author">— Director of Cloud Operations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-lightbulb section-icon"></i>
+                The Solution
+            </h2>
+            <p class="content-text">
+                The company deployed CloudSpendIQ across all their AWS development and QA environments. The
+                implementation was completed in just 2 days with zero disruption to their development workflows.
+            </p>
+
+            <div class="architecture-diagram">
+                <h3 class="chart-title">CloudSpendIQ Implementation Architecture</h3>
+                <div class="diagram-container">
+                    <div class="diagram-box highlight">
+                        <i class="fas fa-cloud" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <p>CloudSpendIQ</p>
+                    </div>
+                    <div class="diagram-arrow">↓</div>
+                    <div class="diagram-row">
+                        <div class="diagram-box">
+                            <p>Daily Cost Reports</p>
+                        </div>
+                        <div class="diagram-box">
+                            <p>Smart Alerts</p>
+                        </div>
+                        <div class="diagram-box">
+                            <p>Resource Inventory</p>
+                        </div>
+                    </div>
+                    <div class="diagram-arrow">↓</div>
+                    <div class="diagram-row">
+                        <div class="diagram-box">
+                            <i class="fas fa-server"></i>
+                            <p>EC2 Monitoring</p>
+                        </div>
+                        <div class="diagram-box">
+                            <i class="fas fa-hdd"></i>
+                            <p>EBS Tracking</p>
+                        </div>
+                        <div class="diagram-box">
+                            <i class="fas fa-database"></i>
+                            <p>RDS Analysis</p>
+                        </div>
+                        <div class="diagram-box">
+                            <i class="fas fa-network-wired"></i>
+                            <p>IP Management</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="column-card">
+                    <h3>Implementation Steps</h3>
+                    <ul>
+                        <li>CloudFormation deployment in 30 minutes</li>
+                        <li>Configured monitoring for 15 AWS regions</li>
+                        <li>Set up daily email reports to team leads</li>
+                        <li>Established cost alert thresholds</li>
+                        <li>Integrated with Slack for notifications</li>
+                        <li>Created cost dashboards for finance team</li>
+                    </ul>
+                </div>
+                <div class="column-card">
+                    <h3>Key Features Utilized</h3>
+                    <ul>
+                        <li>Real-time AWS pricing via Pricing API</li>
+                        <li>Multi-region resource scanning</li>
+                        <li>Unattached resource identification</li>
+                        <li>Automated daily HTML email reports</li>
+                        <li>Cost trend analysis and forecasting</li>
+                        <li>Resource tagging and cost allocation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-month">Week 1-2</div>
+                        <h4>Discovery & Setup</h4>
+                        <p>Deployed CloudSpendIQ, configured regions, established baselines</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-month">Month 1</div>
+                        <h4>Quick Wins</h4>
+                        <p>Identified and terminated 150 idle instances, removed 80 unattached volumes. Savings: 15%</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-month">Month 2-3</div>
+                        <h4>Process Changes</h4>
+                        <p>Implemented auto-shutdown policies, developer training. Savings: 30%</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-month">Month 6</div>
+                        <h4>Optimization Maturity</h4>
+                        <p>Right-sized instances, optimized RDS usage. Savings: 45%</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-month">Month 12</div>
+                        <h4>Sustained Excellence</h4>
+                        <p>Fully optimized environment with continuous monitoring. Savings: 50%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-chart-bar section-icon"></i>
+                Results & ROI
+            </h2>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Monthly AWS Spend: Before vs. After (Dev/QA Environments)</h3>
+                <div class="bar-chart">
+                    <div class="bar">
+                        <div class="bar-fill before" style="height: 100%;">
+                            <span class="bar-value">$360K</span>
+                        </div>
+                        <div class="bar-label">Before CloudSpendIQ</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-fill after" style="height: 50%;">
+                            <span class="bar-value">$180K</span>
+                        </div>
+                        <div class="bar-label">After CloudSpendIQ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="roi-highlight">
+                <h3>12-Month ROI Summary</h3>
+                <div class="roi-grid">
+                    <div class="roi-item">
+                        <div class="roi-value">50%</div>
+                        <div class="roi-label">Cost Reduction</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="roi-value">$180K</div>
+                        <div class="roi-label">Monthly Savings</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="roi-value">$2.16M</div>
+                        <div class="roi-label">Annual Savings</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="roi-value">1,080x</div>
+                        <div class="roi-label">Return on Investment</div>
+                    </div>
+                </div>
+                <p style="margin-top: 30px; color: var(--text-dark); font-size: 1.1rem;">
+                    <strong>Total Investment:</strong> ~$2,000 (CloudSpendIQ setup + AWS infrastructure costs)<br>
+                    <strong>Payback Period:</strong> Less than 1 day
+                </p>
+            </div>
+
+            <div class="two-column">
+                <div class="column-card">
+                    <h3>Quantifiable Results</h3>
+                    <ul>
+                        <li>50% reduction in dev/qa AWS spending</li>
+                        <li>$2.16M saved in the first year</li>
+                        <li>150+ idle EC2 instances identified</li>
+                        <li>80+ unattached EBS volumes removed</li>
+                        <li>25+ unused Elastic IPs released</li>
+                        <li>40+ oversized RDS instances right-sized</li>
+                    </ul>
+                </div>
+                <div class="column-card">
+                    <h3>Operational Improvements</h3>
+                    <ul>
+                        <li>95% reduction in manual cost analysis time</li>
+                        <li>100% visibility into resource usage</li>
+                        <li>Team accountability through daily reports</li>
+                        <li>Proactive alerts preventing cost spikes</li>
+                        <li>Finance team satisfied with cost controls</li>
+                        <li>Freed up budget for production scaling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="quote-section">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="quote-text">
+                    "CloudSpendIQ paid for itself in less than a day. We're now saving $180,000 every single month.
+                    The daily reports have created a culture of cost awareness across our entire engineering
+                    organization. Best investment we've made this year."
+                </p>
+                <p class="quote-author">— VP of Engineering</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h3>Ready to Achieve Similar Results?</h3>
+            <p>Join leading companies that have optimized their AWS spending with CloudSpendIQ</p>
+            <a href="index.html#contact" class="cta-button">
+                <i class="fas fa-envelope"></i> Contact Us for Setup
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Calsoft Inc. All rights reserved. | <a href="index.html" style="color: var(--primary-color); text-decoration: none;">CloudSpendIQ</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Animate bars on scroll
+        const observerOptions = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.metric-card, .column-card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
