@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CalCloudSpendIQ - AWS Cost Monitoring & Optimization Platform. Automated daily reports, real-time cost tracking, and intelligent recommendations to optimize your AWS spending.">
-    <meta name="keywords" content="AWS cost optimization, cloud cost management, AWS pricing, cost monitoring, AWS billing, cloud spending">
+    <meta name="description" content="CalCloudSpendIQ Suite - Comprehensive AWS Cost Monitoring & Optimization. Interactive PWA dashboard with AI-powered insights and automated daily email reports for complete visibility into your AWS spending.">
+    <meta name="keywords" content="AWS cost optimization, cloud cost management, AWS pricing, cost monitoring, AWS billing, cloud spending, FinOps, AI cost analysis">
     <meta name="author" content="Calsoft Inc.">
-    <title>CalCloudSpendIQ - AWS Cost Monitoring & Optimization Platform</title>
+    <title>CalCloudSpendIQ Suite - Complete AWS Cost Monitoring & FinOps Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -675,6 +675,423 @@
             background: var(--secondary-color);
             transform: translateX(5px);
         }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .product-header {
+            padding: 40px 40px 30px;
+            background: var(--gradient);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .product-header h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-header .product-type {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .product-body {
+            padding: 40px;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .product-features li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .product-cta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-try-demo {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(20, 110, 180, 0.3);
+            min-width: 150px;
+        }
+
+        .btn-try-demo:hover {
+            background: #0d5a99;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(20, 110, 180, 0.4);
+        }
+
+        .btn-learn-more {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+            min-width: 150px;
+        }
+
+        .btn-learn-more:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Demo Section */
+        .demo-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .video-placeholder {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 40px 0;
+            box-shadow: var(--shadow-hover);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .video-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-placeholder-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .play-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .video-placeholder-content p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .screenshot-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 3rem;
+        }
+
+        .screenshot-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .screenshot-info h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .screenshot-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Product Tags */
+        .product-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            margin: 10px 5px 0;
+            font-weight: 600;
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            color: var(--white);
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10001;
+        }
+
+        .lightbox-close:hover {
+            background: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: var(--white);
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--primary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* Clickable screenshot cursor */
+        .screenshot-card img[src^="assets/screenshots/"] {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .screenshot-card img[src^="assets/screenshots/"]:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Mobile responsive lightbox */
+        @media (max-width: 768px) {
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+            }
+
+            .lightbox-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .lightbox-caption {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -687,9 +1104,10 @@
                     CalCloudSpendIQ
                 </div>
                 <div class="nav-links">
+                    <a href="#products">Products</a>
                     <a href="#features">Features</a>
+                    <a href="#demo">Demo</a>
                     <a href="#case-studies">Case Studies</a>
-                    <a href="#how-it-works">How It Works</a>
                     <a href="#pricing">Pricing</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -702,11 +1120,88 @@
         <div class="container">
             <div class="hero-content">
                 <div class="badge">
-                    <i class="fab fa-aws"></i> Powered by AWS
+                    <i class="fab fa-aws"></i> Complete FinOps Suite
                 </div>
-                <h1>Take Control of Your AWS Spending</h1>
-                <p>Automated daily cost reports, real-time monitoring, and intelligent optimization recommendations</p>
-                <a href="#contact" class="cta-button">Get Started Today <i class="fas fa-arrow-right"></i></a>
+                <h1>Complete AWS Cost Intelligence Platform</h1>
+                <p>Interactive dashboards with AI-powered insights • Automated daily reports • Real-time cost analytics</p>
+                <a href="#products" class="cta-button">Explore Our Products <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose the Right Solution for Your Needs</h2>
+                <p>Two powerful products, one complete FinOps platform</p>
+            </div>
+            <div class="products-grid">
+                <!-- Product 1: CalCloudSpendIQ App -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-type"><i class="fas fa-desktop"></i> Progressive Web App</div>
+                        <h3>CalCloudSpendIQ App</h3>
+                        <div class="product-tag"><i class="fas fa-brain"></i> AI-Powered</div>
+                        <div class="product-tag"><i class="fas fa-chart-pie"></i> Interactive</div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-description">
+                            An intelligent Progressive Web App (PWA) that combines real-time billing data, resource inventory tracking,
+                            and AI-powered natural language queries in a secure, self-hosted application.
+                        </p>
+                        <ul class="product-features">
+                            <li><strong>Interactive Dashboards:</strong> Real-time cost analytics with beautiful visualizations</li>
+                            <li><strong>AI FinOps Copilot:</strong> Natural language queries powered by GPT-4 ("Show me EC2 instances costing over $100")</li>
+                            <li><strong>Multi-Region Inventory:</strong> Track EC2, RDS, EBS, NAT Gateways, Elastic IPs across all regions</li>
+                            <li><strong>Cost Forecasting:</strong> AI-powered predictions with confidence intervals</li>
+                            <li><strong>Offline Support:</strong> PWA with service worker for offline access</li>
+                            <li><strong>Settings UI:</strong> User-friendly credential and configuration management</li>
+                            <li><strong>Mock Data Mode:</strong> Explore features without AWS credentials</li>
+                        </ul>
+                        <div class="product-cta">
+                            <a href="http://calcloudspendiq.calsoft.org/app" target="_blank" class="btn-try-demo">
+                                <i class="fas fa-play-circle"></i> Try Live Demo
+                            </a>
+                            <a href="#demo" class="btn-learn-more">
+                                <i class="fas fa-images"></i> View Screenshots
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: CalCloudSpendIQ Agent -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-type"><i class="fas fa-robot"></i> Serverless Agent</div>
+                        <h3>CalCloudSpendIQ Agent</h3>
+                        <div class="product-tag"><i class="fas fa-envelope"></i> Automated</div>
+                        <div class="product-tag"><i class="fas fa-server"></i> Serverless</div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-description">
+                            An automated AWS resource monitoring and cost reporting solution that scans your AWS infrastructure
+                            daily and sends detailed HTML email reports with approximate monthly costs.
+                        </p>
+                        <ul class="product-features">
+                            <li><strong>Daily Email Reports:</strong> Beautifully formatted HTML reports delivered automatically</li>
+                            <li><strong>Real-Time Pricing:</strong> Accurate AWS pricing via Pricing API with intelligent caching</li>
+                            <li><strong>Multi-Region Scanning:</strong> Monitor resources across all AWS regions</li>
+                            <li><strong>Resource Monitoring:</strong> EC2, EBS, Elastic IPs, RDS with cost breakdown</li>
+                            <li><strong>Serverless Architecture:</strong> Lambda + EventBridge - fully automated</li>
+                            <li><strong>Cost Optimization Tips:</strong> Identify idle resources and savings opportunities</li>
+                            <li><strong>One-Click Deployment:</strong> CloudFormation template for easy setup</li>
+                        </ul>
+                        <div class="product-cta">
+                            <a href="#how-it-works" class="btn-learn-more">
+                                <i class="fas fa-info-circle"></i> Learn More
+                            </a>
+                            <a href="#contact" class="btn-learn-more">
+                                <i class="fas fa-rocket"></i> Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -715,51 +1210,51 @@
     <section id="features" class="features">
         <div class="container">
             <div class="section-header">
-                <h2>Why CalCloudSpendIQ?</h2>
+                <h2>Why CalCloudSpendIQ Suite?</h2>
                 <p>Complete visibility and control over your AWS infrastructure costs</p>
             </div>
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Insights</h3>
+                    <p>Ask questions in natural language with our FinOps Copilot. Get instant answers about your AWS spending using GPT-4 powered analysis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Real-Time Cost Tracking</h3>
-                    <p>Get accurate, up-to-date AWS pricing data via the AWS Pricing API. Monitor your spending with approximate monthly cost projections.</p>
+                    <h3>Interactive Dashboards</h3>
+                    <p>Real-time cost analytics with beautiful visualizations. Monitor spending trends, forecasts, and resource inventory in an intuitive interface.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h3>Daily Email Reports</h3>
-                    <p>Receive beautifully formatted HTML reports delivered to your inbox every day with detailed resource-level cost breakdowns.</p>
+                    <h3>Automated Reports</h3>
+                    <p>Daily HTML email reports delivered automatically. Get detailed resource-level cost breakdowns without lifting a finger.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-globe"></i>
                     </div>
-                    <h3>Multi-Region Support</h3>
-                    <p>Scan and monitor resources across all AWS regions from a single dashboard. Comprehensive coverage for your global infrastructure.</p>
+                    <h3>Multi-Region Coverage</h3>
+                    <p>Monitor resources across all AWS regions. Comprehensive tracking of EC2, RDS, EBS, NAT Gateways, and Elastic IPs worldwide.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
                     <h3>Cost Optimization</h3>
-                    <p>Identify unattached EBS volumes, idle resources, and other cost-saving opportunities automatically.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Fully Automated</h3>
-                    <p>Serverless architecture using AWS Lambda and CloudWatch Events. No servers to manage, completely hands-free operation.</p>
+                    <p>Identify idle resources, unattached volumes, and savings opportunities automatically. Get actionable recommendations to reduce spending.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-lock"></i>
                     </div>
-                    <h3>Secure & Compliant</h3>
-                    <p>Read-only permissions following AWS best practices. Your infrastructure remains safe and secure.</p>
+                    <h3>Enterprise Security</h3>
+                    <p>AES-256 encryption, read-only permissions, and AWS best practices. Your credentials and infrastructure remain secure at all times.</p>
                 </div>
             </div>
         </div>
@@ -874,6 +1369,137 @@
         </div>
     </section>
 
+    <!-- Demo & Screenshots Section -->
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>See CalCloudSpendIQ App in Action</h2>
+                <p>Experience the power of AI-driven cost analytics with interactive dashboards</p>
+            </div>
+
+            <div class="demo-container">
+                <!-- Demo Video -->
+                <div class="video-placeholder" style="padding-bottom: 56.25%; position: relative; background: #000; cursor: default;">
+                    <video
+                        id="demoVideo"
+                        controls
+                        preload="metadata"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
+                        poster="assets/videos/app-demo-poster.jpg">
+                        <source src="assets/videos/app-demo.mp4" type="video/mp4">
+                        <source src="assets/videos/app-demo.webm" type="video/webm">
+                        <div class="video-placeholder-content">
+                            <div class="play-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <p><strong>Video Not Available</strong></p>
+                            <p style="font-size: 1rem; margin-top: 10px;">
+                                Please add demo video to assets/videos/app-demo.mp4
+                            </p>
+                        </div>
+                    </video>
+                </div>
+
+                <div style="text-align: center; margin: 40px 0;">
+                    <a href="http://calcloudspendiq.calsoft.org/app" target="_blank" class="btn-primary" style="display: inline-block;">
+                        <i class="fas fa-external-link-alt"></i> Try Interactive Demo
+                    </a>
+                </div>
+
+                <!-- Screenshots Grid -->
+                <h3 style="text-align: center; color: var(--secondary-color); margin-top: 60px; margin-bottom: 30px; font-size: 2rem;">
+                    Product Screenshots
+                </h3>
+
+                <div class="screenshots-grid">
+                    <div class="screenshot-card">
+                        <img src="assets/screenshots/dashboard.png"
+                             alt="Cost Analytics Dashboard"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                             style="width: 100%; height: 250px; object-fit: cover;">
+                        <div class="screenshot-placeholder" style="display: none;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="screenshot-info">
+                            <h4>Cost Analytics Dashboard</h4>
+                            <p>Interactive charts showing monthly trends, service breakdown, and cost forecasts</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <img src="assets/screenshots/copilot.png"
+                             alt="AI FinOps Copilot"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                             style="width: 100%; height: 250px; object-fit: cover;">
+                        <div class="screenshot-placeholder" style="display: none;">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="screenshot-info">
+                            <h4>AI FinOps Copilot</h4>
+                            <p>Ask questions in natural language and get instant insights powered by GPT-4</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <img src="assets/screenshots/inventory.png"
+                             alt="Resource Inventory"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                             style="width: 100%; height: 250px; object-fit: cover;">
+                        <div class="screenshot-placeholder" style="display: none;">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="screenshot-info">
+                            <h4>Resource Inventory</h4>
+                            <p>Multi-region view of EC2, RDS, EBS volumes with real-time cost attribution</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <img src="assets/screenshots/settings.png"
+                             alt="Settings & Configuration"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                             style="width: 100%; height: 250px; object-fit: cover;">
+                        <div class="screenshot-placeholder" style="display: none;">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="screenshot-info">
+                            <h4>Settings & Configuration</h4>
+                            <p>User-friendly interface for managing AWS credentials and application settings</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <img src="assets/screenshots/breakdown.png"
+                             alt="Service Cost Breakdown"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                             style="width: 100%; height: 250px; object-fit: cover;">
+                        <div class="screenshot-placeholder" style="display: none;">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="screenshot-info">
+                            <h4>Service Cost Breakdown</h4>
+                            <p>Detailed visualization of costs by AWS service with drill-down capabilities</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <img src="assets/screenshots/recommendations.png"
+                             alt="Smart Recommendations"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                             style="width: 100%; height: 250px; object-fit: cover;">
+                        <div class="screenshot-placeholder" style="display: none;">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="screenshot-info">
+                            <h4>Smart Recommendations</h4>
+                            <p>AI-powered suggestions for cost optimization and resource right-sizing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Monitoring Section -->
     <section id="monitoring" class="monitoring">
         <div class="container">
@@ -959,41 +1585,95 @@
         <div class="container">
             <div class="section-header">
                 <h2>Transparent, Affordable Pricing</h2>
-                <p>Pay only for what you use - AWS infrastructure costs</p>
+                <p>Choose the solution that fits your needs - both options are cost-effective</p>
             </div>
-            <div class="pricing-info">
-                <h3>Minimal Operating Costs</h3>
-                <p class="price">~$2/month</p>
-                <p class="subtext">Typical AWS infrastructure costs to run CalCloudSpendIQ</p>
 
-                <div class="cost-breakdown">
-                    <h4 style="margin-bottom: 20px; color: var(--secondary-color);">Cost Breakdown:</h4>
-                    <ul>
-                        <li>
-                            <span>AWS Lambda</span>
-                            <span>$0-1/mo (within free tier)</span>
-                        </li>
-                        <li>
-                            <span>Amazon SES</span>
-                            <span>$0 (first 62,000 emails free)</span>
-                        </li>
-                        <li>
-                            <span>CloudWatch Logs</span>
-                            <span>~$0.50/mo</span>
-                        </li>
-                        <li>
-                            <span>EventBridge</span>
-                            <span>$0 (within free tier)</span>
-                        </li>
-                        <li style="border-top: 2px solid var(--secondary-color); margin-top: 10px; padding-top: 15px; font-weight: bold;">
-                            <span>Total</span>
-                            <span style="color: var(--primary-color);">~$2/month</span>
-                        </li>
-                    </ul>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; margin-top: 40px;">
+                <!-- Agent Pricing -->
+                <div class="pricing-info">
+                    <h3><i class="fas fa-robot"></i> CalCloudSpendIQ Agent</h3>
+                    <p class="price">~$2/month</p>
+                    <p class="subtext">AWS infrastructure costs only</p>
+
+                    <div class="cost-breakdown">
+                        <h4 style="margin-bottom: 20px; color: var(--secondary-color);">Cost Breakdown:</h4>
+                        <ul>
+                            <li>
+                                <span>AWS Lambda</span>
+                                <span>$0-1/mo</span>
+                            </li>
+                            <li>
+                                <span>Amazon SES</span>
+                                <span>$0</span>
+                            </li>
+                            <li>
+                                <span>CloudWatch Logs</span>
+                                <span>~$0.50/mo</span>
+                            </li>
+                            <li>
+                                <span>EventBridge</span>
+                                <span>$0</span>
+                            </li>
+                            <li style="border-top: 2px solid var(--secondary-color); margin-top: 10px; padding-top: 15px; font-weight: bold;">
+                                <span>Total</span>
+                                <span style="color: var(--primary-color);">~$2/month</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 20px; color: var(--text-light); font-style: italic;">
+                        <i class="fas fa-check-circle"></i> Serverless, fully automated
+                    </p>
                 </div>
 
-                <p style="margin-top: 30px; color: var(--text-light); font-style: italic;">
-                    <i class="fas fa-info-circle"></i> ROI: Save 30%+ on AWS costs while spending less than $2/month
+                <!-- App Pricing -->
+                <div class="pricing-info">
+                    <h3><i class="fas fa-desktop"></i> CalCloudSpendIQ App</h3>
+                    <p class="price">Self-Hosted</p>
+                    <p class="subtext">Run on your own infrastructure</p>
+
+                    <div class="cost-breakdown">
+                        <h4 style="margin-bottom: 20px; color: var(--secondary-color);">Options:</h4>
+                        <ul>
+                            <li>
+                                <span>Local Deployment</span>
+                                <span>$0</span>
+                            </li>
+                            <li>
+                                <span>VPS/Cloud Server</span>
+                                <span>$5-20/mo</span>
+                            </li>
+                            <li>
+                                <span>AWS EC2 (t3.small)</span>
+                                <span>~$15/mo</span>
+                            </li>
+                            <li>
+                                <span>OpenAI API (optional)</span>
+                                <span>$5-20/mo</span>
+                            </li>
+                            <li style="border-top: 2px solid var(--secondary-color); margin-top: 10px; padding-top: 15px; font-weight: bold;">
+                                <span>Total</span>
+                                <span style="color: var(--primary-color);">$0-40/month</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 20px; color: var(--text-light); font-style: italic;">
+                        <i class="fas fa-check-circle"></i> AI-powered, interactive interface
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px; padding: 40px; background: var(--white); border-radius: 20px; box-shadow: var(--shadow);">
+                <h4 style="color: var(--secondary-color); font-size: 1.5rem; margin-bottom: 15px;">
+                    <i class="fas fa-star" style="color: var(--primary-color);"></i> Best Value
+                </h4>
+                <p style="color: var(--text-light); font-size: 1.2rem; line-height: 1.8;">
+                    Use <strong>both products together</strong> for complete AWS cost visibility!<br>
+                    <span style="font-size: 1rem;">Agent for automated monitoring • App for deep analysis and AI insights</span>
+                </p>
+                <p style="margin-top: 20px; color: var(--accent-color); font-weight: bold; font-size: 1.1rem;">
+                    <i class="fas fa-chart-line"></i> ROI: Save 30%+ on AWS costs with minimal investment
                 </p>
             </div>
         </div>
@@ -1002,26 +1682,29 @@
     <!-- CTA Section -->
     <section id="contact" class="cta-section">
         <div class="container">
-            <h2>Ready to Optimize Your AWS Spending?</h2>
-            <p>Contact us today to set up CalCloudSpendIQ for your organization</p>
+            <h2>Ready to Transform Your AWS Cost Management?</h2>
+            <p>Get started with CalCloudSpendIQ Suite today - choose App, Agent, or both!</p>
             <div class="cta-buttons">
-                <a href="https://www.calsoftinc.com/contact-us" class="btn-primary">
-                    <i class="fas fa-envelope"></i> Contact Us for Setup
+                <a href="http://calcloudspendiq.calsoft.org/app" target="_blank" class="btn-primary">
+                    <i class="fas fa-play-circle"></i> Try App Demo
+                </a>
+                <a href="https://www.calsoftinc.com/contact-us" class="btn-secondary">
+                    <i class="fas fa-envelope"></i> Contact Us
                 </a>
             </div>
 
             <div class="stats" style="margin-top: 60px;">
                 <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Powerful Products</div>
+                </div>
+                <div class="stat-item">
                     <div class="stat-number">30%+</div>
                     <div class="stat-label">Average Cost Savings</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">5 min</div>
-                    <div class="stat-label">Setup Time</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Automated</div>
+                    <div class="stat-number">AI</div>
+                    <div class="stat-label">Powered Insights</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">24/7</div>
@@ -1036,18 +1719,27 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>CalCloudSpendIQ</h3>
-                    <p>Professional AWS cost monitoring and optimization platform for enterprises.</p>
+                    <h3>CalCloudSpendIQ Suite</h3>
+                    <p>Complete FinOps platform with AI-powered insights and automated monitoring for AWS cost optimization.</p>
                     <div class="social-links" style="margin-top: 20px;">
                         <a href="https://github.com/Calsoft-Pvt-Ltd"><i class="fab fa-github"></i></a>
                         <a href="https://in.linkedin.com/company/calsoft"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h3>Product</h3>
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#products">CalCloudSpendIQ App</a></li>
+                        <li><a href="#products">CalCloudSpendIQ Agent</a></li>
+                        <li><a href="#demo">Product Demo</a></li>
+                        <li><a href="http://calcloudspendiq.calsoft.org/app" target="_blank">Try Live Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
                     <ul>
                         <li><a href="#features">Features</a></li>
-                        <li><a href="#monitoring">Resource Monitoring</a></li>
+                        <li><a href="#case-studies">Case Studies</a></li>
                         <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#how-it-works">How It Works</a></li>
                     </ul>
@@ -1063,10 +1755,28 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Calsoft Inc. All rights reserved. | CalCloudSpendIQ - AWS Cost Optimization Platform</p>
+                <p>&copy; 2025 Calsoft Inc. All rights reserved. | CalCloudSpendIQ Suite - Complete AWS FinOps Platform</p>
             </div>
         </div>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <div class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+        <div class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="lightbox-content">
+            <img id="lightboxImage" class="lightbox-image" src="" alt="">
+        </div>
+        <div class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
 
     <script>
         // Smooth scrolling for navigation links
@@ -1100,6 +1810,103 @@
         // Observe all cards and sections
         document.querySelectorAll('.feature-card, .monitoring-card, .step, .benefit-item').forEach(el => {
             observer.observe(el);
+        });
+
+        // Lightbox functionality
+        let currentLightboxIndex = 0;
+        let lightboxImages = [];
+
+        // Initialize lightbox
+        function initLightbox() {
+            // Get all screenshot images
+            const screenshotImgs = document.querySelectorAll('.screenshot-card img[src^="assets/screenshots/"]');
+
+            lightboxImages = Array.from(screenshotImgs).map(img => ({
+                src: img.src,
+                alt: img.alt,
+                caption: img.closest('.screenshot-card').querySelector('.screenshot-info h4').textContent
+            }));
+
+            // Add click handlers to all screenshots
+            screenshotImgs.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    openLightbox(index);
+                });
+            });
+        }
+
+        // Open lightbox
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImage');
+            const caption = document.getElementById('lightboxCaption');
+            const counter = document.getElementById('lightboxCounter');
+
+            if (lightboxImages.length > 0 && lightboxImages[index]) {
+                img.src = lightboxImages[index].src;
+                img.alt = lightboxImages[index].alt;
+                caption.textContent = lightboxImages[index].caption;
+                counter.textContent = `${index + 1} / ${lightboxImages.length}`;
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        // Close lightbox
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Navigate lightbox
+        function navigateLightbox(direction) {
+            currentLightboxIndex += direction;
+
+            // Loop around
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = lightboxImages.length - 1;
+            } else if (currentLightboxIndex >= lightboxImages.length) {
+                currentLightboxIndex = 0;
+            }
+
+            const img = document.getElementById('lightboxImage');
+            const caption = document.getElementById('lightboxCaption');
+            const counter = document.getElementById('lightboxCounter');
+
+            img.src = lightboxImages[currentLightboxIndex].src;
+            img.alt = lightboxImages[currentLightboxIndex].alt;
+            caption.textContent = lightboxImages[currentLightboxIndex].caption;
+            counter.textContent = `${currentLightboxIndex + 1} / ${lightboxImages.length}`;
+        }
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightboxModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('lightboxModal');
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1);
+                }
+            }
+        });
+
+        // Initialize lightbox when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait a bit for images to load
+            setTimeout(initLightbox, 500);
         });
     </script>
 </body>
